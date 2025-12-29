@@ -4,13 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Color Picker PWA</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link rel="manifest" href="manifest.json" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <h1>Color Picker PWA with Share</h1>
-<input type="color" id="colorPicker" value="#FF0000" />
+<p><a href="https://kokhinmaungwin.github.io/colorpicker/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Page" class="github-link" title="Visit GitHub Page"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" />GitHub Page</a>
+<span class="star-badge"><img src="https://img.shields.io/github/stars/kokhinmaungwin/colorpicker" alt="GitHub stars" /></span></p>
+
+<div id="colorPickerWrapper">
+  <input type="color" id="colorPicker" value="#ff0000" />
+  <div id="fakeColorCircle"></div>
+</div>
 
 <div class="color-code" id="colorCode">#FF0000</div>
 <button class="copy-btn" id="copyBtn">Copy Color Code</button>
@@ -30,7 +37,21 @@
   <label for="darkToggleCheckbox">Dark Mode</label>
   <input type="checkbox" id="darkToggleCheckbox" />
 </div>
-  
+
+<!-- Share Buttons -->
+<div id="shareButtons">
+  <button class="share-btn fb" id="fbShare">Facebook</button>
+  <button class="share-btn tw" id="twShare">Twitter</button>
+  <button class="share-btn wa" id="waShare">WhatsApp</button>
+</div>
+
+  <footer>Version 1.0.0</footer>
+
+  <!-- Bug Report -->
+  <div class="bug-report">
+    Found a bug? <a href="https://github.com/kokhinmaungwin/colorpicker/issues" target="_blank" rel="noopener noreferrer">Report it here</a>.
+  </div>
+
 <!-- Add this button somewhere in body -->
 <button id="installBtn" style="display:none; margin-top: 20px; padding: 10px 20px; font-size:16px; cursor:pointer; border:none; background:#0078d7; color:#fff; border-radius:6px;">
   Install App
