@@ -47,8 +47,6 @@ A simple and powerful Progressive Web App (PWA) Color Picker that lets you:
 git clone https://github.com/kokhinmaungwin/colorpicker
 ```
 
----
-
 2. Open the project folder
 
 ```bash
@@ -56,8 +54,13 @@ cd colorpicker
 ```
 
 3. Open index.html in your browser
+
 (or use Live Server)
+
 -⚠️ Service Worker requires HTTPS or localhost
+
+---
+
 ## 📲 Install as App
 You can install on:
 - Android 📱
