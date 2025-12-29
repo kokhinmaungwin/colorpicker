@@ -5,12 +5,7 @@
   const message = document.getElementById('message');
   const darkToggleCheckbox = document.getElementById('darkToggleCheckbox');
 
-  // Social share buttons
-  const fbShare = document.getElementById('fbShare');
-  const twShare = document.getElementById('twShare');
-  const waShare = document.getElementById('waShare');
-
-  // Helper functions
+  // Helper functions (same as before)
   function hexToRgb(hex) {
     hex = hex.replace('#', '');
     const bigint = parseInt(hex, 16);
@@ -106,26 +101,11 @@
     const formattedColor = formatColor(colorPicker.value, selectedFormat);
     colorCode.textContent = formattedColor;
     message.textContent = '';
-    updateURL(colorPicker.value);
   }
 
-  function updateURL(hex) {
-    if(history.replaceState) {
-      const newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?color=' + encodeURIComponent(hex);
-      window.history.replaceState({path: newURL}, '', newURL);
-    }
-  }
+  colorPicker.addEventListener('input', updateColorCode);
+  formatSelector.addEventListener('change', updateColorCode);
 
-  function getColorFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    const color = params.get('color');
-    if(color && /^#[0-9A-Fa-f]{6}$/.test(color)) {
-      return color.toUpperCase();
-    }
-    return null;
-  }
-
-  // Copy to clipboard
   copyBtn.addEventListener('click', () => {
     const text = colorCode.textContent;
     navigator.clipboard.writeText(text).then(() => {
@@ -147,42 +127,12 @@
     }
   });
 
-  // Social share functions
-  function shareOnFacebook(color) {
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
-  }
-  function shareOnTwitter(color) {
-    const text = encodeURIComponent(`Check out this color: ${color}`);
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'width=600,height=400');
-  }
-  function shareOnWhatsApp(color) {
-    const text = encodeURIComponent(`Check out this color: ${color} - ${window.location.href}`);
-    window.open(`https://wa.me/?text=${text}`, '_blank');
-  }
-
-  fbShare.addEventListener('click', () => shareOnFacebook(colorCode.textContent));
-  twShare.addEventListener('click', () => shareOnTwitter(colorCode.textContent));
-  waShare.addEventListener('click', () => shareOnWhatsApp(colorCode.textContent));
-
-  // Listen to color and format changes
-  colorPicker.addEventListener('input', updateColorCode);
-  formatSelector.addEventListener('change', updateColorCode);
-
-  // Load saved dark mode preference and color from URL
+  // Load saved dark mode preference
   window.addEventListener('DOMContentLoaded', () => {
-    const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode === 'enabled') {
+    if (localStorage.getItem('darkMode') === 'enabled') {
       document.body.classList.add('dark');
       darkToggleCheckbox.checked = true;
     }
-
-    const urlColor = getColorFromURL();
-    if(urlColor) {
-      colorPicker.value = urlColor;
-    }
-
     updateColorCode();
   });
 
