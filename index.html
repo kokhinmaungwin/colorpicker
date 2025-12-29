@@ -9,23 +9,34 @@
 </head>
 <body>
 
-<h1>Color Picker PWA</h1>
+<h1>Color Picker PWA with Share</h1>
 <input type="color" id="colorPicker" value="#FF0000" />
 
-<div>
-  <div class="color-code" id="hexCode">HEX: #FF0000</div>
-  <button class="copy-btn" data-copy-target="hexCode">Copy HEX</button>
-</div>
-<div>
-  <div class="color-code" id="rgbCode">RGB: rgb(255, 0, 0)</div>
-  <button class="copy-btn" data-copy-target="rgbCode">Copy RGB</button>
-</div>
-<div>
-  <div class="color-code" id="hslCode">HSL: hsl(0, 100%, 50%)</div>
-  <button class="copy-btn" data-copy-target="hslCode">Copy HSL</button>
-</div>
+<div class="color-code" id="colorCode">#FF0000</div>
+<button class="copy-btn" id="copyBtn">Copy Color Code</button>
+
+<select id="formatSelector" aria-label="Select color format">
+  <option value="HEX">HEX</option>
+  <option value="RGB">RGB</option>
+  <option value="HSL">HSL</option>
+  <option value="CMYK">CMYK</option>
+  <option value="HSV">HSV</option>
+</select>
 
 <div id="message"></div>
+
+<!-- Dark Mode Toggle -->
+<div id="darkModeToggle">
+  <label for="darkToggleCheckbox">Dark Mode</label>
+  <input type="checkbox" id="darkToggleCheckbox" />
+</div>
+
+<!-- Share Buttons -->
+<div id="shareButtons">
+  <button class="share-btn fb" id="fbShare">Facebook</button>
+  <button class="share-btn tw" id="twShare">Twitter</button>
+  <button class="share-btn wa" id="waShare">WhatsApp</button>
+</div>
   
 <!-- Add this button somewhere in body -->
 <button id="installBtn" style="display:none; margin-top: 20px; padding: 10px 20px; font-size:16px; cursor:pointer; border:none; background:#0078d7; color:#fff; border-radius:6px;">
