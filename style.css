@@ -146,41 +146,6 @@
     left: 21px;
   }
 
-  #shareButtons {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .share-btn {
-    padding: 10px 18px;
-    font-size: 16px;
-    border: none;
-    border-radius: var(--btn-radius);
-    cursor: pointer;
-    color: white;
-    transition: background-color 0.3s ease;
-  }
-  .fb {
-    background-color: #3b5998;
-  }
-  .fb:hover {
-    background-color: #2d4373;
-  }
-  .tw {
-    background-color: #1da1f2;
-  }
-  .tw:hover {
-    background-color: #0d95e8;
-  }
-  .wa {
-    background-color: #25d366;
-  }
-  .wa:hover {
-    background-color: #1ebe57;
-  }
-
   @media (max-width: 480px) {
     #colorPicker {
       width: 120px;
