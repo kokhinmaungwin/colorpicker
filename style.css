@@ -40,6 +40,11 @@
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: box-shadow var(--transition-speed);
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-clip: padding-box;
   }
 
   #colorPicker:hover {
