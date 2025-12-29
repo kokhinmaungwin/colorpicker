@@ -55,9 +55,9 @@ cd colorpicker
 
 3. Open index.html in your browser
 
-(or use Live Server)
+  (or use Live Server)
 
--⚠️ Service Worker requires HTTPS or localhost
+   ⚠️ Service Worker requires HTTPS or localhost
 
 ---
 
@@ -91,19 +91,6 @@ Example included files:
 
 ---
 
-## ⭐ Star this repo
-If you like this project, please give it a ⭐ on GitHub — it really helps!
-�
-
----
-
-## 📝 License
-This project is free to use.
-
-MIT License
-
----
-
 ## 🙌 Author
 
-Khin Maung Win
+  Khin Maung Win
