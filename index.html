@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Color Picker PWA</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<h1>Color Picker PWA</h1>
+<input type="color" id="colorPicker" value="#FF0000" />
+
+<div>
+  <div class="color-code" id="hexCode">HEX: #FF0000</div>
+  <button class="copy-btn" data-copy-target="hexCode">Copy HEX</button>
+</div>
+<div>
+  <div class="color-code" id="rgbCode">RGB: rgb(255, 0, 0)</div>
+  <button class="copy-btn" data-copy-target="rgbCode">Copy RGB</button>
+</div>
+<div>
+  <div class="color-code" id="hslCode">HSL: hsl(0, 100%, 50%)</div>
+  <button class="copy-btn" data-copy-target="hslCode">Copy HSL</button>
+</div>
+
+<div id="message"></div>
+  
+<!-- Add this button somewhere in body -->
+<button id="installBtn" style="display:none; margin-top: 20px; padding: 10px 20px; font-size:16px; cursor:pointer; border:none; background:#0078d7; color:#fff; border-radius:6px;">
+  Install App
+</button>
+  
+<script src="main.js"></script>
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Show the install button
+    installBtn.style.display = 'inline-block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    // Hide the install button
+    installBtn.style.display = 'none';
+    // Show the install prompt
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    }
+  });
+
+  // Optional: hide button if app already installed
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed');
+    installBtn.style.display = 'none';
+  });
+</script>
+</body>
+</html>
